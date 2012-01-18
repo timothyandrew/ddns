@@ -21,8 +21,8 @@ public_ip = Net::HTTP.get(URI('http://icanhazip.com/'))
 Net::HTTP.get(URI("http://#{options[:server]}:#{options[:port]}/set?name=#{options[:name]}&ip=#{public_ip}"))
 
 EventMachine.run {
-    timer = EventMachine::PeriodicTimer.new(options[:interval] * 60) do     
+  timer = EventMachine::PeriodicTimer.new(options[:interval] * 60) do     
     public_ip = Net::HTTP.get(URI('http://icanhazip.com/'))
-    Net::HTTP.get(URI("http://#{options[:host]}:#{options[:port]}/set?name=#{options[:name]}&ip=#{public_ip}"))
+    Net::HTTP.get(URI("http://#{options[:server]}:#{options[:port]}/set?name=#{options[:name]}&ip=#{public_ip}"))
   end
 }                        
