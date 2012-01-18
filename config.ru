@@ -1,2 +1,2 @@
-require './server'
+require './ddns-server'
 run Sinatra::Application
