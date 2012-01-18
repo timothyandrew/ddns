@@ -11,7 +11,10 @@ OptionParser.new do |opts|
   opts.on("-p PORT", "--port PORT", "Port of server running ddns-server")           { |v| options[:port]      = v }
   opts.on("-n NAME", "--name NAME", "Unique identifier for current machine")        { |v| options[:name]      = v }
   opts.on("-i INTERVAL", "--interval INTERVAL", "Update interval in minutes")       { |v| options[:interval]  = v.to_i }
-  opts.on( '-h', '--help', 'Display this screen' ) { puts opts }
+  opts.on( '-h', '--help', 'Display this screen' ) do 
+    puts opts
+    exit 
+  end
 end.parse!
 
 public_ip = Net::HTTP.get(URI('http://icanhazip.com/'))                                        
